@@ -1,15 +1,15 @@
-FROM alpine:latest
+FROM ubuntu:latest
 
 ARG TARGETPLATFORM
 ENV TZ="Asia/Shanghai"
 
 COPY ./script/entrypoint.sh /entrypoint.sh
 
-RUN apk --no-cache --no-progress add \
-    ca-certificates \
-    tzdata && \
-    cp "/usr/share/zoneinfo/$TZ" /etc/localtime && \
-    echo "$TZ" >  /etc/timezone && \
+RUN export DEBIAN_FRONTEND="noninteractive" && \
+    apt update && apt install -y wget ca-certificates tzdata && \
+    update-ca-certificates && \
+    ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
+    dpkg-reconfigure tzdata && \
     chmod +x /entrypoint.sh
 
 WORKDIR /dashboard
