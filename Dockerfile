@@ -6,7 +6,7 @@ ENV TZ="Asia/Shanghai"
 COPY ./script/entrypoint.sh /entrypoint.sh
 
 RUN export DEBIAN_FRONTEND="noninteractive" && \
-    apt update && apt install -y wget ca-certificates tzdata && \
+    apt update && apt install -y ca-certificates tzdata && \
     update-ca-certificates && \
     ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure tzdata && \
