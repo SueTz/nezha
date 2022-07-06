@@ -31,10 +31,10 @@ jobs:
       - name: move dist
         run: |
           mkdir -p target/linux/{arm,arm64,386,amd64,s390x,riscv64}
-          mv dist/universal_linux_arm/dashboard target/linux/arm/dashboard
+          mv dist/universal_linux_arm_6/dashboard target/linux/arm/dashboard
           mv dist/universal_linux_arm64/dashboard target/linux/arm64/dashboard
           mv dist/universal_linux_386/dashboard target/linux/386/dashboard
-          mv dist/universal_linux_amd64/dashboard target/linux/amd64/dashboard
+          mv dist/universal_linux_amd64_v1/dashboard target/linux/amd64/dashboard
           mv dist/universal_linux_s390x/dashboard target/linux/s390x/dashboard
           mv dist/universal_linux_riscv64/dashboard target/linux/riscv64/dashboard
 
