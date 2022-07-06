@@ -17,4 +17,4 @@ builds:
     gomips:
       - softfloat
     main: ./cmd/dashboard
-    binary: dsahboard
+    binary: dashboard
