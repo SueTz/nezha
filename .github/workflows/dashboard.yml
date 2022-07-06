@@ -32,7 +32,7 @@ jobs:
         run: |
           mkdir -p target/linux/{arm,arm64,386,amd64,s390x}
           mkdir target/linux/arm/v7/
-          mv dist/universal_linux_arm_6/dashboard target/linux/arm/v7/dashboard
+          mv dist/universal_linux_arm_7/dashboard target/linux/arm/v7/dashboard
           mv dist/universal_linux_arm64/dashboard target/linux/arm64/dashboard
           mv dist/universal_linux_386/dashboard target/linux/386/dashboard
           mv dist/universal_linux_amd64_v1/dashboard target/linux/amd64/dashboard

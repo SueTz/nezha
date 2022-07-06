@@ -13,6 +13,8 @@ builds:
       - 386
       - amd64
       - s390x
+    goarm:
+      - 7
     gomips:
       - softfloat
     main: ./cmd/dashboard
