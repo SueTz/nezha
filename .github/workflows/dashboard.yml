@@ -15,6 +15,23 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          distribution: goreleaser
+          version: latest
+          args: build --rm-dist -f .goreleaser.dashboard.yml
+
+      - name: move dist
+        run: |
+          mkdir -p target/linux/{arm,arm64,386,amd64,s390x,riscv64}
+          mv dist/universal_linux_arm/dashboard target/linux/arm/dashboard
+          mv dist/universal_linux_arm64/dashboard target/linux/arm64/dashboard
+          mv dist/universal_linux_386/dashboard target/linux/386/dashboard
+          mv dist/universal_linux_amd64/dashboard target/linux/amd64/dashboard
+          mv dist/universal_linux_s390x/dashboard target/linux/s390x/dashboard
+          mv dist/universal_linux_riscv64/dashboard target/linux/riscv64/dashboard
+
       - name: Log in to the GHCR
         uses: docker/login-action@master
         with:
@@ -51,7 +68,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64,linux/arm,linux/386,linux/s390x
+          platforms: linux/amd64,linux/arm64,linux/arm,linux/386,linux/s390x,linux/riscv64
           push: true
           tags: |
             ${{ steps.image-name.outputs.GHRC_IMAGE_NAME }}
